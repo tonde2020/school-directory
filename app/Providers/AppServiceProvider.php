@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+// اختياري: إذا كنت تستخدم MySQL 5.6 أو تواجه مشاكل في الطول
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // اختياري: لمنع مشكلة "Specified key was too long" في MySQL 5.6
+        Schema::defaultStringLength(191);
     }
 }
